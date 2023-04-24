@@ -3,17 +3,14 @@
 #include "block.h"
 #include "util.h"
 
+#define PATH(name)                      "/home/yf/scripts/dwmblocks/"name
 Block blocks[] = {
-    {"sb-mail",    600,  1 },
-    {"sb-music",   0,    2 },
-    {"sb-disk",    1800, 3 },
-    {"sb-memory",  10,   4 },
-    {"sb-loadavg", 5,    5 },
-    {"sb-mic",     0,    6 },
-    {"sb-record",  0,    7 },
-    {"sb-volume",  0,    8 },
-    {"sb-battery", 5,    9 },
-    {"sb-date",    1,    10},
+    {PATH("get_icon.sh"),         	0,              	1},
+    {PATH("get_volume.sh"),        	0,              	2},
+	{PATH("get_battery.sh"),       	60,              	3},
+	{PATH("get_time.sh"),         	1,              	4},
+	{PATH("get_week.sh"),         	3600,              	5},
+	{PATH("trayer_toggle.sh"),     	0,              	6},
 };
 
 const unsigned short blockCount = LEN(blocks);
