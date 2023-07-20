@@ -3,7 +3,7 @@
 #include "block.h"
 #include "util.h"
 
-#define PATH(name)                      "/home/yf/sde/scripts/dwmblocks/"name
+#define PATH(name)                      "/home/yf/space/scripts/sde/blocks/"name
 Block blocks[] = {
 	{PATH("icon.sh"),              0,              1},
 	{PATH("netspeed.sh"),          1,              8},
