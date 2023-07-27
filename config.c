@@ -7,7 +7,7 @@
 Block blocks[] = {
 	{PATH("icon.sh"),              0,              1},
 	{PATH("netspeed.sh"),          1,              8},
-	{PATH("volume.sh"),            0,              2},
+	{PATH("volume.sh"),            5,              2},
 	{PATH("bluetooth.sh"),         15,             3},
 	{PATH("battery.sh"),           60,             4},
 	{PATH("time.sh"),              1,              5},
