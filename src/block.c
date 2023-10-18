@@ -10,6 +10,9 @@
 
 static int execLock = 0;
 
+// 判断是否显示所有blocks
+static int showAll = 0;
+
 void execBlock(const Block *block, const char *button) {
     unsigned short i = block - blocks;
 
@@ -24,6 +27,7 @@ void execBlock(const Block *block, const char *button) {
         close(block->pipe[1]);
 
         if (button) setenv("BLOCK_BUTTON", button, 1);
+		if (showAll) setenv("BLOCK_SHOW_ALL", "1", 1);
 
         FILE *file = popen(block->command, "r");
         if (!file) {
@@ -69,4 +73,10 @@ void updateBlock(Block *block) {
 
     // Remove execution lock for the current block
     execLock &= ~(1 << (block - blocks));
+}
+
+// 切换是否显示所有block的状态
+void toggleBlocksVisible(){
+	showAll = !showAll;
+	execBlocks(0);
 }

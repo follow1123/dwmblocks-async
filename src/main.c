@@ -34,6 +34,10 @@ void signalHandler() {
             // Update all blocks on receiving SIGUSR1
             execBlocks(0);
             return;
+        case SIGUSR2:
+			// 切换是否显示所有block的状态
+            toggleBlocksVisible();
+            return;
     }
 
     for (int j = 0; j < blockCount; j++) {
@@ -55,6 +59,7 @@ void setupSignals() {
     sigset_t handledSignals;
     sigemptyset(&handledSignals);
     sigaddset(&handledSignals, SIGUSR1);
+    sigaddset(&handledSignals, SIGUSR2);
     sigaddset(&handledSignals, SIGALRM);
 
     // Append all block signals to `handledSignals`

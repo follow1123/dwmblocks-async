@@ -15,3 +15,4 @@ extern const unsigned short blockCount;
 void execBlock(const Block *, const char *);
 void execBlocks(unsigned int);
 void updateBlock(Block *);
+void toggleBlocksVisible();
