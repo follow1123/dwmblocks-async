@@ -35,7 +35,7 @@ void signalHandler() {
             execBlocks(0);
             return;
         case SIGUSR2:
-			// 切换是否显示所有block的状态
+            // 切换是否显示所有block的状态
             toggleBlocksVisible();
             return;
     }
@@ -148,6 +148,7 @@ int main(const int argc, const char *argv[]) {
         }
     }
 
+    initdatahome();
     init();
     statusLoop();
 

@@ -27,9 +27,15 @@ void execBlock(const Block *block, const char *button) {
         close(block->pipe[1]);
 
         if (button) setenv("BLOCK_BUTTON", button, 1);
-		if (showAll) setenv("BLOCK_SHOW_ALL", "1", 1);
+        if (showAll) setenv("BLOCK_SHOW_ALL", "1", 1);
 
-        FILE *file = popen(block->command, "r");
+        char *cmd = concat_datahome(block->command);
+        if (cmd == NULL) {
+            fprintf(stderr, "dwmblocks datahome concat error\n");
+            return;
+        }
+
+        FILE *file = popen(cmd, "r");
         if (!file) {
             printf("\n");
             exit(EXIT_FAILURE);
@@ -48,6 +54,7 @@ void execBlock(const Block *block, const char *button) {
         trimUTF8(buffer, LEN(buffer));
 
         printf("%s\n", buffer);
+        free(cmd);
         exit(EXIT_SUCCESS);
     }
 }
@@ -77,6 +84,6 @@ void updateBlock(Block *block) {
 
 // 切换是否显示所有block的状态
 void toggleBlocksVisible(){
-	showAll = !showAll;
-	execBlocks(0);
+    showAll = !showAll;
+    execBlocks(0);
 }
